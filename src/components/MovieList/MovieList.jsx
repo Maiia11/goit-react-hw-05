@@ -1,10 +1,13 @@
+import { Link } from "react-router-dom"
 
 
-const MovieList = ({title}) => {
+const MovieList = ({title, id}) => {
   return (
       <div>
           <ul>
-              <li>{title}</li>
+              <li>
+                  <Link to={String(id)}>{title}</Link>
+              </li>
           </ul>
     </div>
   )
