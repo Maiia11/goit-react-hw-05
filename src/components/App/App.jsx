@@ -1,6 +1,10 @@
+import { Route, Routes } from 'react-router-dom';
+import Navigation from '../../pages/Navigation/Navigation';
 import './App.css'
 
 import axios from "axios";
+import HomePage from '../../pages/HomePage/HomePage';
+import MoviesPage from '../../pages/MoviesPage/MoviesPage';
 
 const url = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US';
 
@@ -16,6 +20,15 @@ const options = {
 
   // const keyApi = "06e2d1a8597b98bddccf4fed9e98e9e3";
 function App() {
+    return (
+        <>
+            <Navigation />
+            <Routes>
+                <Route path='/' element={<HomePage />} />
+                <Route path='/movies' element={<MoviesPage/>} />
+            </Routes>
+        </>
+    )
 
 
   
