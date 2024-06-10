@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom"
+import { Link, Outlet, useParams } from "react-router-dom"
 import { getSingleMovieApi } from "../../films-api" 
 import { useEffect, useState } from "react";
 const MovieDetailsPage = () => {
@@ -40,7 +40,7 @@ const MovieDetailsPage = () => {
   return (
       <div>
           <div>
-          <img src={`https://image.tmdb.org/t/p/w500${film.poster_path}`} />
+          <img src={`https://image.tmdb.org/t/p/w500${film.poster_path}`} alt="photo" />
           <h1>{film.original_title}</h1>
           <h2>Overview</h2>
           <p>{film.overview}</p>
@@ -54,7 +54,8 @@ const MovieDetailsPage = () => {
           <nav>
           <Link to='cast'>Cast</Link>
               <Link to='reviews'>Reviews</Link>
-              </nav>
+          </nav>
+          <Outlet/>
 
       </div>
 
