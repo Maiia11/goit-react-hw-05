@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom"
 
 
-const MovieList = ({title, id}) => {
+const MovieList = ({title, movieId}) => {
   return (
       <div>
           <ul>
-              <li>
-                  <Link to={`/movies/${id}`}>{title}</Link>
+        <li>
+          <nav>
+            <Link to={`/movies/${movieId}`}>{title}</Link>
+            </nav>
               </li>
           </ul>
     </div>

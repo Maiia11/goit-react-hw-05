@@ -22,9 +22,9 @@ export const getTrendingMovies = async () => {
 }
 
 
-export const getSingleMovieApi = async (id) => {
+export const getSingleMovieApi = async (movieId) => {
   try {
-    const {data} =  await axios.get(`https://api.themoviedb.org/3/movie/${id}`, {
+    const {data} =  await axios.get(`https://api.themoviedb.org/3/movie/${movieId}`, {
     params: {
         language: language,
       },

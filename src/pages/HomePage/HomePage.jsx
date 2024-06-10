@@ -34,7 +34,7 @@ const HomePage = () => {
           {movies.length > 0 && movies.map((film => {
               return (
                   <div key={film.id}>
-                      <MovieList title={film.original_title} id={film.id} />
+                      <MovieList title={film.original_title} movieId={film.id} />
               </div>)
               }))
             }    
