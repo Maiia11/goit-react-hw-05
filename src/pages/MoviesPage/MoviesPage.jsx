@@ -3,17 +3,21 @@ import{getMoviesApiWithQuery} from '../../films-api'
 import MovieList from "../../components/MovieList/MovieList";
 
 
+
 const MoviesPage = () => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([])
     const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+  
+
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
   };
   
-  const handleSearch = async () => {
+  const handleSearch = async (e) => {
+    e.preventDefault();
     
     
     try {
@@ -32,8 +36,11 @@ const MoviesPage = () => {
   
   return (
     <div>
-      <input type="text"  value={query} onChange={handleInputChange} />
-      <button type="submit" onClick={handleSearch}>Search</button>
+      <form onSubmit={handleSearch}>
+        <input type="text"  value={query} onChange={handleInputChange} />
+      <button type="submit">Search</button>
+      </form>
+      
       {isLoading && <p>Loading...</p>}
       {error && <p>Error fetching movies. Please try again later.</p>}
 
