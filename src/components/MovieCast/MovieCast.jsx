@@ -18,7 +18,7 @@ const MovieCast = () => {
 
                 setError(false)
                 
-                console.log(data);
+                
             
         } catch (err) {
                 setError(true)

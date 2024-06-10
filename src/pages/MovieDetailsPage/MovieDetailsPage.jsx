@@ -8,7 +8,7 @@ const MovieDetailsPage = () => {
     const [error, setError] = useState(false);
 
     const location = useLocation();
-    console.log(location);
+    
 
     const backLocation = useRef(location.state ?? '/movies')
     
@@ -19,7 +19,7 @@ const MovieDetailsPage = () => {
                 const data = await getSingleMovieApi(movieId);
                 setFilm(data);
                 setError(false)
-                console.log(data);
+                
             
         } catch (err) {
                 setError(true)
