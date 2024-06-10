@@ -55,6 +55,25 @@ export const getCastMovies = async (movieId) => {
     console.log(err);
   }
    
+}
+ 
+
+export const getReviewsMovies = async (movieId) => {
+  try {
+    const {data} =  await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/reviews`, {
+    params: {
+        language: language,
+      },
+    headers: {
+    Authorization: `Bearer ${bearerToken}`
+    }
+  })
+ return data
+    
+  } catch (err) {
+    console.log(err);
+  }
+   
  }
 
 

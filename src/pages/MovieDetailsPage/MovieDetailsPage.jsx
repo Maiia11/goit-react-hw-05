@@ -39,6 +39,7 @@ const MovieDetailsPage = () => {
 
   return (
       <div>
+          <button type="button">Go back</button>
           <div>
           <img src={`https://image.tmdb.org/t/p/w500${film.poster_path}`} alt="photo" />
           <h1>{film.original_title}</h1>
