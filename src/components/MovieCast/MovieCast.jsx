@@ -14,7 +14,10 @@ const MovieCast = () => {
             try {
             setIsLoading(true);
                 const data = await getCastMovies(movieId);
+                setCasts(data.cast)
+
                 setError(false)
+                
                 console.log(data);
             
         } catch (err) {
