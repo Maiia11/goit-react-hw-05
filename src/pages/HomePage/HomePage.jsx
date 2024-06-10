@@ -3,10 +3,12 @@ import { getTrendingMovies } from "../../films-api"
 import MovieList from "../../components/MovieList/MovieList";
 
 
+
 const HomePage = () => {
     const [movies, setMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(false);
+    
 
     useEffect(() => {
         const getMovies = async () => {

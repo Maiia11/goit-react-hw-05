@@ -1,11 +1,16 @@
-import { Link, Outlet, useParams } from "react-router-dom"
+import { Link, Outlet, useLocation, useParams } from "react-router-dom"
 import { getSingleMovieApi } from "../../films-api" 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 const MovieDetailsPage = () => {
     const { movieId } = useParams();
     const [film, setFilm] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(false);
+
+    const location = useLocation();
+    console.log(location);
+
+    const backLocation = useRef(location.state ?? '/movies')
     
     useEffect(() => {
         const getFilm = async () => {
@@ -39,7 +44,10 @@ const MovieDetailsPage = () => {
 
   return (
       <div>
-          <button type="button">Go back</button>
+          <Link to={backLocation.current}>
+              <button type="button">Go back</button>
+          </Link>
+          
           <div>
           <img src={`https://image.tmdb.org/t/p/w500${film.poster_path}`} alt="photo" />
           <h1>{film.original_title}</h1>
