@@ -6,7 +6,7 @@ const MovieList = ({title, id}) => {
       <div>
           <ul>
               <li>
-                  <Link to={String(id)}>{title}</Link>
+                  <Link to={`/movies/${id}`}>{title}</Link>
               </li>
           </ul>
     </div>

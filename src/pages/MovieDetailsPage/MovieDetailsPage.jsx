@@ -1,11 +1,46 @@
 import { useParams } from "react-router-dom"
 import { getSingleMovieApi } from "../../films-api" 
+import { useEffect, useState } from "react";
 const MovieDetailsPage = () => {
-    const{id} = useParams()
+    const { id } = useParams();
+    const [film, setFilm] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(false);
+    
+    useEffect(() => {
+        const getFilm = async () => {
+            try {
+            setIsLoading(true);
+                const data = await getSingleMovieApi(id);
+                setFilm(data);
+                setError(false)
+                console.log(data);
+            
+        } catch (err) {
+                setError(true)
+            
+            } finally {
+                setIsLoading(false)
+            
+        } 
+            
+        }
+        getFilm()
+        
+    }, [id])
+    if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error fetching movie details. Please try again later.</p>;
+  }
 
 
   return (
-    <div>MovieDetailsPage</div>
+      <div>
+          <h1>{film.original_title}</h1>
+      </div>
   )
 }
 
