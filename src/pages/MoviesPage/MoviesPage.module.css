@@ -1,0 +1,21 @@
+.container{
+    margin: 16px;
+}
+
+.input{
+    width: 250px;
+    height: 25px;
+}
+
+.btn {
+    width: 90px;
+    padding: 5px;
+    background-color: rgb(233, 138, 15);
+    color: white;
+    margin-left: 6px;
+    
+}
+
+.btn:focus {
+    background-color: chocolate;
+}
