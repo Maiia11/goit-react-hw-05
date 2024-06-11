@@ -11,6 +11,7 @@ const MoviesPage = () => {
   const [error, setError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('query') || "")
+   const [noResults, setNoResults] = useState(false);
   
 
   useEffect(() => {
@@ -21,6 +22,7 @@ const MoviesPage = () => {
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
+    setNoResults(false);
   };
   
 
@@ -35,8 +37,16 @@ const MoviesPage = () => {
     try {
       setIsLoading(true);
       setError(false);
+      setNoResults(false);
+      setMovies([]);
       const data = await getMoviesApiWithQuery(query);
-      setMovies(data.results);
+      if (data.results.length === 0) {
+        setNoResults(true);
+      } else {
+        setMovies(data.results);
+        setNoResults(false)
+
+      }
     } catch (err) {
       setError(true);
     } finally {
@@ -53,6 +63,7 @@ const MoviesPage = () => {
       
       {isLoading && <p>Loading...</p>}
       {error && <p>Error fetching movies. Please try again later.</p>}
+      {noResults && <p>No movies found with the title "{query}". Please try again.</p>}
 
       {movies.length > 0 && movies.map((film => {
               return (
