@@ -1,7 +1,7 @@
 import {  useEffect, useState } from "react";
 import{getMoviesApiWithQuery} from '../../films-api'
 import MovieList from "../../components/MovieList/MovieList";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import css from './MoviesPage.module.css'
 
 const MoviesPage = () => {
@@ -11,14 +11,15 @@ const MoviesPage = () => {
   const [error, setError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('query') || "")
-   const [noResults, setNoResults] = useState(false);
+  const [noResults, setNoResults] = useState(false);
+  const location = useLocation()
   
 
   useEffect(() => {
     if (searchParams.get('query')) {
       fetchMovies(searchParams.get('query'))
     }
-  }, [])
+  }, [searchParams])
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
@@ -64,14 +65,7 @@ const MoviesPage = () => {
       {isLoading && <p>Loading...</p>}
       {error && <p>Error fetching movies. Please try again later.</p>}
       {noResults && <p>No movies found with the title "{query}". Please try again.</p>}
-
-      {movies.length > 0 && movies.map((film => {
-              return (
-                  <div key={film.id}>
-                      <MovieList title={film.original_title} movieId={film.id} />
-              </div>)
-              }))
-            }   
+      {movies.length > 0 && <MovieList movies={movies} location={location} />}
     </div>
   )
 }
