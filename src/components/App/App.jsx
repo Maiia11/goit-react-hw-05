@@ -6,6 +6,7 @@ import MoviesPage from '../../pages/MoviesPage/MoviesPage';
 import MovieDetailsPage from '../../pages/MovieDetailsPage/MovieDetailsPage';
 import MovieCast from '../MovieCast/MovieCast';
 import MovieReviews from '../MovieReviews/MovieReviews';
+import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
                 <Route path='/movies/:movieId' element={<MovieDetailsPage />}>
                     <Route path='cast' element={<MovieCast/> } />
                     <Route path='reviews' element={<MovieReviews/>} />
-                    </Route>
+                </Route>
+                <Route path='*' element={<NotFoundPage/>} />
             </Routes>
         </>
     )

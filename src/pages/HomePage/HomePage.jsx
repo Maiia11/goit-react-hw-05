@@ -17,7 +17,6 @@ const HomePage = () => {
                 const data = await getTrendingMovies();
                 setMovies(data.results)
                 setError(false)
-                
             } catch (err) {
                 setError(true)
             } finally {

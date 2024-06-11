@@ -2,8 +2,7 @@ import { Link, useLocation } from "react-router-dom"
 
 
 const MovieList = ({ title, movieId }) => {
-  const location = useLocation();
-  
+const location = useLocation();
   return (
       <div>
           <ul>

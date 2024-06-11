@@ -15,20 +15,17 @@ const MovieReviews = () => {
                 const data = await getReviewsMovies(movieId);
                 setReviews(data.results);
                 setError(false)
-                console.log(data);
-            
         } catch (err) {
                 setError(true)
-            
             } finally {
                 setIsLoading(false)
-            
         } 
             
         }
         getReviews()
         
     }, [movieId])
+    
     if (isLoading) {
     return <p>Loading...</p>;
   }

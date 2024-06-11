@@ -15,20 +15,14 @@ const MovieCast = () => {
             setIsLoading(true);
                 const data = await getCastMovies(movieId);
                 setCasts(data.cast)
-
                 setError(false)
-                
-                
-            
-        } catch (err) {
+            } catch (err) {
                 setError(true)
-            
             } finally {
                 setIsLoading(false)
-            
-        } 
-            
+        }   
         }
+        
         getCast()
         
     }, [movieId])
