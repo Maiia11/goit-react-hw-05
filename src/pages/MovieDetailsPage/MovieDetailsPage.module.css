@@ -1,3 +1,49 @@
 .btn{
-    margin: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 12px;
+    background-color: rgb(233, 138, 15);
+    color: white
+}
+
+.btn:focus{
+    background-color: chocolate;
+}
+ 
+.container{
+    display: flex;
+    gap: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.containerInf{
+    display: flex;
+    flex-direction: column;
+}
+
+.img{
+    display: block;
+    width: 100%;
+
+}
+.h2{
+    margin-bottom: 0;
+}
+
+.containerAditionInf{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.nav{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.link{
+    color:rgb(233, 138, 15);
 }

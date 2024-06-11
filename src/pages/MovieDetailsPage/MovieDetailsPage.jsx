@@ -40,24 +40,31 @@ const MovieDetailsPage = () => {
   return (
       <div>
           <Link to={backLocation.current}>
-              <button type="button">Go back</button>
+              <button type="button" className={css.btn}>Go back</button>
           </Link>
 
-          <div>
-          <img src={`https://image.tmdb.org/t/p/w500${film.poster_path}`} alt="photo" />
+          <div className={css.container}>
+              <img src={`https://image.tmdb.org/t/p/w300${film.poster_path}`} alt="photo" />
+              <div className={css.containerInf}>
           <h1>{film.original_title}</h1>
-          <h2>Overview</h2>
-          <p>{film.overview}</p>
-          <h2>Genres</h2>
+          <h2 className={css.h2}> Overview</h2>
+                  <p>{film.overview}</p>
+                  
+                  <h2 className={css.h2}>Genres</h2>
+                  <div className={css.container}>
           {film.genres.map((genre) => ( <p key={genre.id}>{genre.name}</p>
           ))}
+                      </div>
+                  </div>
           </div>
-          <h3>Aditional information</h3>
-          <nav>
-          <Link to='cast'>Cast</Link>
-              <Link to='reviews'>Reviews</Link>
+          <div className={css.containerAditionInf}>
+          <h3 className={css.h2}>Aditional information</h3>
+          <nav className={css.nav}>
+          <Link to='cast' className={css.link}>Cast</Link>
+              <Link to='reviews' className={css.link}>Reviews</Link>
           </nav>
-          <Outlet />
+              <Outlet />
+              </div>
           
       </div>
 
