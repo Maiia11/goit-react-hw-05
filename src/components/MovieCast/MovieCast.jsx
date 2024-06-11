@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import{getCastMovies} from '../../films-api'
 import { useParams } from "react-router-dom";
+import css from "./MovieCast.module.css"
 
 
 const MovieCast = () => {
@@ -34,12 +35,12 @@ const MovieCast = () => {
     return <p>Error fetching movie details. Please try again later.</p>;
   }
   return (
-      <div>
+      <div >
         {casts && casts.length > 0 ? (
             casts.map(({ id, name, character, profile_path }) => (
-                <div key={id}>
-                    {profile_path && <img src={`https://image.tmdb.org/t/p/w300${profile_path}`} alt="photo" />}
-                    <h4>Name: {name}</h4>
+                <div key={id} >
+                    {profile_path && <img src={`https://image.tmdb.org/t/p/w300${profile_path}`} alt="photo" className={css.img } />}
+                    <h4 className={css.h4}>Name: {name}</h4>
                     <p>Character: {character}</p>
                 </div>
             ))
